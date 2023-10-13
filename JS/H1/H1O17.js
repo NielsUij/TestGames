@@ -13,11 +13,14 @@ function draw() {
   // teken de grond
   fill('wheat');
   rect(0,250,width,height - 250);  
-
+  
+  tekenBoom(250);
+  tekenBoom(150);
+  tekenBoom(50);
   tekenHuis();
+  tekenZon();
 
-  tekenBoom(700);
-  tekenBoom(900);
+
 }
 
 function tekenHuis() {
@@ -41,4 +44,11 @@ function tekenBoom(x) {
   fill('olive');
   ellipse(x + 20,130,100,150);
   pop();
+}
+
+function tekenZon() {
+  push();
+  noStroke();
+  fill('yellow')
+  circle(950,30,250)
 }
