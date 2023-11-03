@@ -1,7 +1,7 @@
 var schaal;
 
 function setup() {
-  canvas = createCanvas(1000,300);
+  canvas = createCanvas(1000, 300);
   canvas.parent('processing');
   noStroke();
 }
@@ -12,15 +12,17 @@ function draw() {
 
   // teken de grond
   fill('wheat');
-  rect(0,250,width,height - 250);  
-  
-  tekenBoom(250);
-  tekenBoom(150);
-  tekenBoom(50);
+  rect(0, 250, width, height - 250);
+
   tekenHuis();
-  tekenZon();
 
+  tekenBoom(700);
+  tekenBoom(900);
 
+  // Roep de tekenZon-functie aan om de zon te tekenen
+  // x-positie wordt bepaald door de muis (mouseX)
+  // schaalfactor wordt bepaald door de verticale positie van de muis (mouseY)
+  tekenZon(mouseX, schaal);
 }
 
 function tekenHuis() {
@@ -28,11 +30,11 @@ function tekenHuis() {
   strokeWeight(4);
   stroke('darkgrey');
   fill('lightgray');
-  rect(100,180,100,100);
+  rect(100, 180, 100, 100);
   fill('gray');
-  triangle(100,180,200,180,150,100);
+  triangle(100, 180, 200, 180, 150, 100);
   noStroke();
-  rect(120,230,30,50);
+  rect(120, 230, 30, 50);
   pop();
 }
 
@@ -40,15 +42,18 @@ function tekenBoom(x) {
   push();
   noStroke();
   fill('sienna');
-  rect(x,130,40,130);
+  rect(x, 130, 40, 130);
   fill('olive');
-  ellipse(x + 20,130,100,150);
+  ellipse(x + 20, 130, 100, 150);
   pop();
 }
 
-function tekenZon() {
+// Functie om de zon te tekenen met aangepaste positie (x) en schaal (s)
+function tekenZon(x, s) {
   push();
-  noStroke();
-  fill('yellow')
-  circle(950,30,250)
+  fill('red');
+  scale(s);
+  ellipse(x, 200, 300, 300);
+  pop();
 }
+

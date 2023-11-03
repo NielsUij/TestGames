@@ -1,5 +1,6 @@
-var xJOS = 75;
+var xJOS = 75; // Plaats JOS 75 pixels vanaf de linkerkant
 var yJOS = 75;
+var canvasWidth = 450; // Breedte van het canvas
 
 function setup() {
   canvas = createCanvas(450, 450);
@@ -12,21 +13,16 @@ function setup() {
 
 function draw() {
   background('lavender');
-  
-  // Teken de eerste JOS op x = 75
+  text("x = " + round(xJOS), 10, 20);
   tekenJos(xJOS, yJOS);
-  
-  // Teken de tweede JOS op x = 175
-  tekenJos(xJOS + 100, yJOS);
-  
-  // Teken de derde JOS op x = 275
-  tekenJos(xJOS + 200, yJOS);
-  
-  // Laat alle JOS poppetjes naar rechts bewegen met 3 pixels
-  xJOS += 3;
-  
-  // Constrain om te zorgen dat JOS stopt bij de rechterkant van het canvas
-  xJOS = constrain(xJOS, 75, width - 75);
+  translate(0, 160);
+  tekenJos(xJOS, yJOS);
+  translate(0, 160);
+  tekenJos(xJOS, yJOS);
+  xJOS += 3; // Beweeg alle JOS-versies naar rechts met 3 pixels
+
+  // Beperk de x-positie tot de rechterkant van het canvas
+  xJOS = constrain(xJOS, 0, canvasWidth - 75);
 }
 
 function tekenJos(x, y) {
@@ -50,3 +46,4 @@ function tekenJos(x, y) {
   arc(0, 13, 26, 13, 0, PI, CHORD);
   pop();
 }
+
