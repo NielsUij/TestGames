@@ -3,16 +3,25 @@ function setup() {
   background('white');
   canvas.parent('processing');
   noLoop();
-  // colorMode(RGB,255,255,255,1);
+   colorMode(RGB,255,255,255,1);
 }
 
 function draw() {
   noStroke();
-  // fill(0,0,255,0.3);
-  fill('green');
-  rect(0,0,1000,450);
-  fill('red');
+   fill(0,0,255,0.3);
   rect(0,150,450,150);
-  fill('blue');
+  rect(0,0,150,450);
   rect(75,0,375,450);
+
+
+  noStroke();
+  ellipse(450,225,450);
+
+  strokeWeight(3);
+  beginShape();
+  vertex(225,1);
+  vertex(450,225);
+  vertex(225,450);
+  endShape(CLOSE);
+
 }
